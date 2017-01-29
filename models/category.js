@@ -28,4 +28,4 @@ categorySchema.pre('save', function(next) {
 
 var Category = mongoose.model('Category', categorySchema);
 
-module.exports = categorySchema;
+module.exports = Category;

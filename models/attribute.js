@@ -22,4 +22,4 @@ attributeSchema.pre('save', function(next) {
 });
 
 var Attribute = mongoose.model('Attribute', attributeSchema);
-module.exports = attributeSchema;
+module.exports = Attribute;
