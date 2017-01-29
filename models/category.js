@@ -27,5 +27,5 @@ categorySchema.pre('save', function(next) {
 });
 
 var Category = mongoose.model('Category', categorySchema);
-exports.categorySchema = categorySchema;
-module.exports = Category;
+
+module.exports = categorySchema;
