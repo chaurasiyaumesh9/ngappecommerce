@@ -25,5 +25,5 @@ setSchema.pre('save', function(next) {
 });
 
 var AttributeSet = mongoose.model('AttributeSet', setSchema);
-
+exports.setSchema = setSchema;
 module.exports = AttributeSet;

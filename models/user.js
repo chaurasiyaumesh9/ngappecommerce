@@ -3,7 +3,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 
 
-var UserSchema = mongoose.Schema({
+var UserSchema = new Schema({
 
     local            : {
         email        : { type : String  },
@@ -63,5 +63,6 @@ UserSchema.pre('save', function(next) {
 }); */
 
 var User = mongoose.model('User', UserSchema);
+exports.UserSchema = UserSchema;
 
 module.exports = User;
