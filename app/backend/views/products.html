@@ -1,0 +1,162 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		 <h1> <i class="fa fa-wrench"></i> {{ message }} </h1>
+	</div>
+</div>
+
+<loader></loader>
+<div class="product-listing-page" ng-hide="loading">
+	<div class="container">
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{ deleteCount }} {{alert.msg}}</uib-alert>
+	</div>
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="btn-group" uib-dropdown >
+				  <button type="button" class="btn btn-default" uib-dropdown-toggle >
+					{{ currentCategory.name || 'Look-up By Category'}}  <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" uib-dropdown-menu role="menu" >
+					<li ng-repeat="category in categories" role="menuitem">  <a href="" ng-click="loadCategoryProducts( category )" > {{category.name}} </a> </li>
+					</ul>
+				</div>
+
+				<a href="" ng-click="currentCategory = {}"> <i class="fa fa-refresh"></i> </a>
+
+			</div>
+			<div class="col-xs-6">
+				<form>
+				<div class="form-group">
+				  <div class="input-group">
+					<div class="input-group-addon"><i class="fa fa-search"></i></div>
+					<input type="text" class="form-control" placeholder="Look up by product name..." ng-model="searchProduct">
+				  </div>      
+				</div>
+			  </form>
+			</div>
+			<div class="col-xs-3">
+				<div class="btn-group" uib-dropdown >
+				  <button type="button" class="btn btn-default" uib-dropdown-toggle >
+					{{ pageSize || 'View'}} /Page <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" uib-dropdown-menu role="menu" >
+					<li role="menuitem">  <a href="" ng-click="pageSize = 5" > 5 </a> </li>
+					<li role="menuitem">  <a href="" ng-click="pageSize = 10" > 10 </a> </li>
+					<li role="menuitem">  <a href="" ng-click="pageSize = 15" > 15 </a> </li>
+					<li role="menuitem">  <a href="" ng-click="pageSize = 25" > 25 </a> </li>
+					</ul>
+				</div>
+				<span style="line-height:34px;" class="pull-right"> (<span style="font-weight:bold;">{{ productList.length }}</span>) Products </span>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- <div class="alert alert-danger" ng-show="deletionSuccess">
+		  <strong>{{ deleteCount }} </strong> Product(s) deleted successfully!
+		</div> -->
+		
+		
+		<div ng-show="productList.length > 0">
+			<table class="table table-striped" >
+				<thead>
+					<tr>
+						<th> <input type="checkbox" ng-model="selectAll" ng-click="checkAll()"  /> </th>
+						<th> <a href="" class="theader">Product</a> </th>
+						<th> 
+							<a href="" ng-click="sortType = 'name'; sortReverse = !sortReverse" class="theader">
+								Product Name
+								<span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+							</a> 
+						</th>
+						<!-- <th>  
+							<a href="" ng-click="sortType = 'SKU'; sortReverse = !sortReverse" class="theader">
+								SKU
+								<span ng-show="sortType == 'SKU' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'SKU' && sortReverse" class="fa fa-caret-up"></span>
+							</a> 
+						</th> -->
+						<th>  
+							<a href="" ng-click="sortType = 'date_added'; sortReverse = !sortReverse" class="theader">
+								Added On
+								<span ng-show="sortType == 'date_added' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'date_added' && sortReverse" class="fa fa-caret-up"></span>
+							</a> 
+						</th>
+						<th>  
+							<a href="" ng-click="sortType = 'updated_at'; sortReverse = !sortReverse" class="theader">
+								Last Modified
+								<span ng-show="sortType == 'updated_at' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'updated_at' && sortReverse" class="fa fa-caret-up"></span>
+							</a> 
+						</th>
+						
+						<th> 
+							 
+							<a href="" ng-click="sortType = 'price'; sortReverse = !sortReverse" class="theader">
+								Price
+								<span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+							</a>
+						</th>
+						<th>  
+							<a href="" ng-click="sortType = 'quantity'; sortReverse = !sortReverse" class="theader">
+								Quantity
+								<span ng-show="sortType == 'quantity' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'quantity' && sortReverse" class="fa fa-caret-up"></span>
+							</a>
+						</th>
+						<th>  
+							<a href="" ng-click="sortType = 'discontinued'; sortReverse = !sortReverse" class="theader">
+								Discontinued
+								<span ng-show="sortType == 'discontinued' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'discontinued' && sortReverse" class="fa fa-caret-up"></span>
+							</a>
+						</th>
+						<th>  
+							<a href="" ng-click="sortType = 'in_stock'; sortReverse = !sortReverse" class="theader">
+								In Stock
+								<span ng-show="sortType == 'in_stock' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'in_stock' && sortReverse" class="fa fa-caret-up"></span>
+							</a>
+						</th>
+						<th>  </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr dir-paginate="product in productList | orderBy:sortType:sortReverse | filterProductsByCategory:currentCategory | filter:searchProduct | filter:q | itemsPerPage: pageSize" current-page="currentPage">
+						<td> <input type="checkbox" ng-model="product.selected" ng-click="checkIndividual()" /> </td>
+						<td width="85" height="85"> <a href="#/products/{{ product._id }}" >  <img src="{{ product.images | smallImg }}" class="small-image" /> </a>  </td>
+						<td> {{ product.name }}  </td>
+						
+						<!-- <td> {{ product.SKU }} </td>  -->
+						<td> {{ product.date_added | date:"MM/dd/yyyy 'at' h:mma" }} </td>
+						<td> {{ product.updated_at | date:"MM/dd/yyyy 'at' h:mma" }} </td>
+						
+						<td> {{ product.price }} </td>
+						<td> {{ product.quantity }} </td>
+						<td> {{ product.discontinued | yesNo }} </td>
+						<td> {{ product.in_stock | yesNo}} </td>
+						<td> <a href="#/products/{{ product._id }}"> <!-- <i class="fa fa-eye"></i> --> View  </a> </td> 
+						<!-- <td> <md-button class="md-raised md-primary md-hue-1" ng-href="#/products/{{ product.id }}"> View </md-button> </td> -->
+						
+					 </tr>
+				 </tbody>
+			</table>
+			<div class="text-center">
+				<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/admin/templates/dirPagination.tpl.html"></dir-pagination-controls>
+			  </div>
+		</div>
+	</div>	
+	<div class="container">
+		<a class="btn btn-primary" href="#/products/add-new"> <i class="fa fa-plus"></i> Add New </a>
+		<button class="btn btn-danger" ng-disabled="!showDelete" ng-click="deleteProducts()"> <i class="fa fa-trash"></i> Delete </button>
+	</div>
+
+</div>
+
+
+
+
+

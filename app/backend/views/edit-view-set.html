@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		 <h1> <i class="fa fa-tags"></i> Update Attribute Set </h1>
+	</div>
+</div>
+
+<loader></loader>
+<div ng-hide="loading">
+	<div class="container" >
+		
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert( $index )"> {{ alert.msg }} </uib-alert>
+		
+		<form ng-submit="updateOneById( set )" ng-init="loadDefaults()" method="POST" role="form">
+			<attribute-set></attribute-set>
+			<a class="btn btn-default" ng-click="selectAll()" href=""> Select All </a>
+			<a class="btn btn-default" ng-click="deSelectAll()" ng-disabled="set.attributes.length==0" href=""> Clear All </a> 
+			<button type="submit" class="btn btn-primary" ng-disabled="set.attributes.length==0"> Update Attribute Set</button>
+		</form>
+	</div>
+	<div class="container">
+		<hr/>
+	</div>
+
+	<div class="container">
+		<a class="btn btn-default" href="#/attributes/">  Manage Attributes </a> 
+		<a class="btn btn-default" href="#/attributes/add-new">  Add New Attribute </a> 
+		<a class="pull-right" href="#/attribute-sets/">  Go back </a> 
+	</div>
+</div>
+

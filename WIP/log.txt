@@ -1,0 +1,23 @@
+CRITICAL
+2. check by passing blank values. / Need frontend data validation
+8. Configure Grunt to manage tasks like restart server on save changes + using sass/compass + minifying js/css
+9. using angular material/ Material design lite { http://www.material-ui.com/#/components/flat-button , http://noeticforce.com/best-material-design-web-frameworks}
+10. update deleted rows count after deletion of rows on category & products listing page.
+11. implement cancel button and its logic. should act similar to 'go back' button. also delete the uploaded images on server for new products.
+12. loading image while content gets loaded - { DONE }
+13. admin - filter products by category {{ DONE }}
+14. admin - delete multiple products images @once. {{ nice to have }}
+15. frontend - PDP in-stock/out of stock logic {{ DONE }}
+16. frontend - list view /grid view {{ DONE }}
+17. frontend - filter products by [popular, heigh price, low price, new ] {{ DONE }}
+18. frontend + Backend - products attributes i.e. size, color, length etc.
+19. frontend + Backend - manage reviews
+20. frontend + Backend - currency setup & implementation. currently it is applicable for rupees only.
+21. frontend + Backend - similar products setup
+22. frontend + Backend - searching
+23. frontend + Backend - recently viewed
+24. frontend + Backend - filters on listing page
+25. backend - product expiry logic. product should get deleted/discountinues after being expired.
+26. frontend - updated profile pic of user once logged in.
+27. Frontend - star rating template to be updated as per URL http://codepen.io/anon/pen/NqazVa {{ done }}
+28. backend - remove unwanted field from DB. i.e. product.attributes.

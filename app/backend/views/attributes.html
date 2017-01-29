@@ -1,0 +1,87 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		 <h1> <i class="fa fa-wrench"></i> {{ message }} </h1>
+	</div>
+</div>
+
+<loader></loader>
+<div class="attribute-page" ng-hide="loading">
+	<div class="container">
+		
+		<div class="row">
+			<div class="col-xs-3">
+				
+			</div> 
+			<div class="col-xs-6">
+				<form>
+				<div class="form-group">
+				  <div class="input-group">
+					<div class="input-group-addon"><i class="fa fa-search"></i></div>
+					<input type="text" class="form-control" placeholder="Look up by attribute name..." ng-model="searchAttributes">
+				  </div>      
+				</div>
+			  </form>
+			</div>
+			<div class="col-xs-3">
+				<div class="btn-group" uib-dropdown >
+				  <button type="button" class="btn btn-default" uib-dropdown-toggle >
+					{{ pageSize || 'View'}} /Page <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" uib-dropdown-menu role="menu" >
+					<li role="menuitem">  <a href="" ng-click="pageSize = 5" > 5 </a> </li>
+					<li role="menuitem">  <a href="" ng-click="pageSize = 10" > 10 </a> </li>
+					<li role="menuitem">  <a href="" ng-click="pageSize = 15" > 15 </a> </li>
+					<li role="menuitem">  <a href="" ng-click="pageSize = 25" > 25 </a> </li>
+					</ul>
+				</div>
+				<span style="line-height:34px;" class="pull-right"> (<span style="font-weight:bold;">{{ attributes.length }}</span>) Attributes </span>
+			</div>
+		</div>
+	</div>
+	<div class="container" >
+		
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"> {{ deleteCount }} {{alert.msg}}</uib-alert>
+		<table class="table table-striped" ng-show="attributes.length>0">
+			<thead>
+				<tr>
+					<th> <input type="checkbox" ng-model="selectAll" ng-click="checkAll()"  /> </th>
+					<th >  
+						<a href="" ng-click="sortType = 'label'; sortReverse = !sortReverse" class="theader">
+							Attribute Name
+							<span ng-show="sortType == 'label' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'label' && sortReverse" class="fa fa-caret-up"></span>
+						</a>   
+					</th>
+					<th > Attribute Code </th>
+					<th > Component Type </th>
+					<th> 
+						<a href="" ng-click="sortType = 'created_at'; sortReverse = !sortReverse" class="theader">
+							Date Created
+							<span ng-show="sortType == 'created_at' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'created_at' && sortReverse" class="fa fa-caret-up"></span>
+						</a>   
+					</th>
+					<th> </th>
+				</tr>
+			</thead> 
+			<tbody>
+				<tr dir-paginate="at in attributes | orderBy:sortType:sortReverse | filter:searchAttributes | filter:q | itemsPerPage: pageSize" current-page="currentPage">
+				<!-- <tr ng-repeat="at in attributes"> -->
+					<td> <input type="checkbox" ng-model="at.selected" ng-click="checkIndividual()" /> </td>
+					<td> {{ at.label }} </td>
+					<td> {{ at.code }} </td>
+					<td> {{ at.type }} </td>
+					<td> {{ at.created_at | date:"MM/dd/yyyy 'at' h:mma"}} </td>
+					<td> <a href="#/attributes/{{at._id}}"> View </a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="text-center">
+			<dir-pagination-controls boundary-links="true" template-url="/admin/templates/dirPagination.tpl.html"></dir-pagination-controls>
+		  </div>
+	</div>
+	<div class="container">
+		<a class="btn btn-primary" href="#/attributes/add-new"> <i class="fa fa-plus"></i> Add New </a>
+		<button class="btn btn-danger" ng-disabled="!showDelete" ng-click="deleteAttributes()"> <i class="fa fa-trash"></i> Delete </button>
+	</div>
+</div>

@@ -1,0 +1,50 @@
+<div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="form-group">
+				<label for="name"> Set Name : </label>
+				<input type="text" name="name" id="name" class="form-control" ng-model="set.name">
+			</div>	
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix">  
+					<span class="pull-left lh44">Attributes Available</span> 
+					<div class="pull-left">
+						<input type="text" class="form-control" placeholder="Look up for Attributes.." ng-model="searchAttributes" style="max-width:220px;margin:5px;" >
+					</div>
+					<span class="pull-right lh44"> Total <span class="fwb">{{ attributesAvailable.length }}</span> Attributes </span>  
+				</div>
+				<div class="panel-body mxh310">
+					<ul style="margin:0;padding:0;list-style:none;">
+						<li ng-repeat="item in attributesAvailable | filter:searchAttributes | orderBy:'label'" ng-init="bool[$index] = isChecked( item._id )"  > 
+							<label class="input" > <input type="checkbox" ng-change="sync(bool[$index], item)" ng-model="bool[$index]" ng-checked="isChecked(item._id)"> <span class="">{{ item.label }}</span> </label>
+						</li>
+					</ul>
+				</div>
+			  </div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">  Attributes Selected <span class="pull-right"> (<span class="fwb">{{ set.attributes.length }}</span>) of {{ attributesAvailable.length }} </span></div>
+				<div class="panel-body mxh310"> 
+					<ul style="margin:0;padding:0;list-style:none;">
+						<li ng-repeat="item in set.attributes | orderBy:'label'" > <label class="input"> <span >{{ item.label }}</span> </label>  </li>
+					</ul> 
+				</div>
+			 </div>				
+		</div>
+	</div>
+	<!-- <div class="row">
+		<div class="col-md-6">
+			  <h3>Final Data Array</h3>
+			  <pre>{{ set.attributes | json}}</pre>
+		</div>
+		<div class="col-md-6">
+			  <h3>All Checkboxes Array</h3>
+			  <pre>{{ attributesAvailable | json}}</pre>
+		</div>
+	</div> -->
+</div>

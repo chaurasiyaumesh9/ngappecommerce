@@ -1,0 +1,35 @@
+{
+  "name": "expres-app-0023",
+  "homepage": "https://github.com/chaurasiyaumesh9/express-app-0023",
+  "authors": [
+    "Umesh Chaurasiya <chaurasiyaumesh9@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "latest",
+    "angular-material": "latest",
+    "angular": "latest",
+    "bootstrap-datepicker": "latest",
+    "bootstrap": "latest",
+    "font-awesome": "latest",
+    "ng-file-upload": "latest",
+    "slick-carousel": "latest",
+    "angular-bootstrap": "latest",
+    "requirejs": "latest",
+    "domReady": "requirejs-domready#^2.0.1",
+    "angular-filepicker": "^1.1.4",
+    "angular-elevate-zoom": "^1.0.3",
+    "elevatezoom": "^2.2.3",
+    "chart.js": "1.0.2"
+  }
+}

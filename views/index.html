@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="sampleCartApp">
+<head>
+	<meta charset="UTF-8">
+	 <base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="Z686TVbvd51-En3-YD9BOhFwcTr0ytN-EDDM03bh9hs" />
+	<!-- <meta name="fragment" content="!"> -->
+
+	<title> An E-commerce Web App using MEAN Stack </title>
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">	
+	<link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css" >
+	<link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick.css">
+	<link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick-theme.css">
+	<link rel="stylesheet" href="assets/stylesheets/star-rating.css">	
+	<link rel="stylesheet" href="assets/stylesheets/style.css">	
+	
+</head>
+<body >
+	<div class="wrapper">
+		 <div class="top-menu" ng-show="!fullmode" ng-controller="navCtrl">
+ 		
+ 		<!-- <div class="top-menu" ng-show="!fullmode" >
+ --><nav class="navbar navbar-default">
+			  <div class="container">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" ng-click="navbarCollapsed = !navbarCollapsed">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				  </button>
+				  <a class="navbar-brand" ng-href="/" ng-click="hideNav()"><i class="fa fa-shield"></i> MEAN is awesome!</a>
+				</div>
+				<div class="collapse navbar-collapse" uib-collapse="navbarCollapsed">
+				  <ul class="nav navbar-nav">
+					<li> <a ng-href="/" ng-click="hideNav()"><span class="fa fa-home"></span> Home</a> </li>
+					<li ng-repeat="category in categories" ><a ng-href="/products/{{ category._id }}" ng-click="hideNav()"> {{category.name}} </a></li>
+				  </ul>
+				  <ul class="nav navbar-nav navbar-right">
+					<li> <a ng-href="/login" ng-hide="activeUser" ng-click="hideNav()"> <span class="glyphicon glyphicon-log-in"></span> Login </a> </li>
+					<li> <a ng-href="/signup" ng-hide="activeUser" ng-click="hideNav()"> <span class="glyphicon glyphicon-user"></span> Sign Up </a> </li>
+					<li> <a ng-href="/logout" ng-click="hideNav();logout()" ng-show="activeUser"> <span class="fa fa-sign-out"></span> Logout </a> </li>
+					<li> <a ng-href="/profile" ng-show="activeUser" ng-click="hideNav()"> <span class="fa fa-user-plus"> My Profile </a> </li>
+				  </ul>
+				</div>
+			  </div>
+			</nav>
+		</div>
+		<div class="view-container">
+			<div ng-view class="view-frame"></div>
+		</div>
+		<footer class="footer" ng-show="!fullmode">
+			<div class="container">
+				<p class="text-muted text-center"> @copyright UMCH Corp Inc 2016 </p>
+			</div>
+		</footer>
+	</div>
+	
+ <script src="../bower_components/angular/angular.min.js"> </script>
+ <script src="../bower_components/angular-route/angular-route.min.js"> </script>
+ <script src="../bower_components/angular-animate/angular-animate.min.js"> </script>
+ <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"> </script>
+ <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"> </script>
+ <script src="../bower_components/angular-aria/angular-aria.min.js"> </script>
+ <script src="../bower_components/angular-material/angular-material.min.js"> </script>
+ <script src="../bower_components/jquery/dist/jquery.min.js"> </script>
+ <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"> </script>
+ <script src="../bower_components/slick-carousel/slick/slick.min.js"> </script>
+ 
+ <script src="assets/scripts/app.js"> </script>
+ <script src="assets/scripts/appRoutes.js"> </script>
+ <script src="assets/scripts/services/categories.js"> </script>
+ <!-- <script src="assets/scripts/directives/productGridView.js"> </script>
+ <script src="assets/scripts/directives/productListView.js"> </script>
+ <script src="assets/scripts/directives/loading.js"> </script>
+ <script src="assets/scripts/directives/appspecific.js"> </script>
+ <script src="assets/scripts/directives/starRating.js"> </script>
+ <script src="assets/scripts/services/products.js"> </script>
+ 
+ <script src="assets/scripts/filters/filters.js"> </script> -->
+ <script src="assets/scripts/controllers/hompageCtrl.js"> </script>
+ <script src="assets/scripts/controllers/navCtrl.js"> </script>
+ <!-- <script src="assets/scripts/controllers/loginCtrl.js"> </script>
+ <script src="assets/scripts/controllers/profileCtrl.js"> </script>
+ <script src="assets/scripts/controllers/signupCtrl.js"> </script>
+ <script src="assets/scripts/controllers/socialConnectCtrl.js"> </script>
+ <script src="assets/scripts/controllers/productListingCtrl.js"> </script>
+ <script src="assets/scripts/controllers/productDetailsCtrl.js"> </script>
+ <script src="assets/scripts/controllers/productFullmodeCtrl.js"> </script>
+ <script src="assets/scripts/controllers/ratingController.js"> </script> -->
+ 
+	
+ <!-- 
+ <script src="assets/scripts/app.js"> </script>
+   -->
+</body>
+</html>

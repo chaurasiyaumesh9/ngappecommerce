@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		 <h1> <i class="fa fa-tags"></i> Edit/View Product  </h1>
+	</div>
+</div>
+
+<loader></loader>
+<div class="container" ng-init="loadDefaults()" ng-hide="loading">
+	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	<!-- <ul class="messages" >
+		<li> 
+			<div class="message alert alert-success" ng-show="updateSuccess">
+			  <strong>Success!</strong> Product Updated Successfully!
+			</div>
+		</li>
+		<li>
+			<div class="message alert alert-danger" ng-show="deleteSuccess">
+			  <strong>Success!</strong> Product Deleted Successfully!
+			</div>
+		</li>
+	</ul> -->
+	<loader></loader>
+	<form ng-submit="updateProduct( product )" method="POST" role="form" ng-hide="loading">
+		<product ></product>
+		<button type="submit" class="btn btn-primary"> Update </button>
+		<a href="#products" class="pull-right">Go Back</a>
+		<a href="#products" class="btn btn-danger" ng-click="deleteProduct( product )"> <i class="fa fa-trash-o"></i> Delete </a>
+	</form>
+</div>
+
+<style type="text/css">
+	
+</style>

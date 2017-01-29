@@ -1,0 +1,21 @@
+<section class="product-grid-view">
+	<div class="wrapper">
+		<div class="product-image-wrapper">
+			 <!-- <a href="#!/products/{{activeCategory._id}}/{{product._id}}"> <img src="{{ product.images | smallImg }}" class="product-image" /> </a>   -->
+			 <!-- <a href=""> <img src="{{ product.images | smallImg }}" class="product-image" /> </a> -->
+			 <a href="#!/product/{{product._id}}"> <img ng-src="{{ product.images | smallImg }}" class="product-image"   /> </a>  
+		</div>
+		<!-- <p class="product-name">  <a href="#!/products/{{activeCategory._id}}/{{product._id}}">  <span style="font-weight:bold;">{{ product.name }}</span>  <span class="title">{{ product.title }}</span></a>   		</p> -->
+		<p class="product-name">  <a href="#!/product/{{product._id}}">  <span style="font-weight:bold;">{{ product.name }}</span>  <span class="title">{{ product.title }}</span></a>   		</p>
+		<p class="price-block"> 
+			<span class="price regular-price {{ product.special_price > 0? 'strickeout':'' }}"><i class="fa fa-inr"></i>{{ product.price | currency:'':0}}</span> 
+			<span class="price special-price" ng-show="product.special_price > 0"><i class="fa fa-inr"></i>{{ product.special_price | currency:'':0}}</span> 
+		</p>
+		<p>
+			<a class="btn btn-md btn-primary" ng-hide="!product.in_stock" ng-click="addToCart( product )" href=""> <i class="fa fa-cart-plus" aria-hidden="true"></i>  Add To Cart </a>
+			<button class="btn btn-md btn-warning" ng-show="!product.in_stock" ng-disabled="true"> <i class="fa fa-cart-plus" aria-hidden="true"></i>  Out of Stock </button>
+		</p>
+	</div>
+	
+</section>
+

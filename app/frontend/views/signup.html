@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="col-sm-6 col-sm-offset-3">
+		<h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+		<!-- <div class="alert alert-warning" ng-show="showMessage">
+			<strong>Warning!</strong> {{ message }}
+		  </div> -->
+		  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+		<!-- SIGN UP FORM -->
+		<form ng-submit="signUp( user )" method="POST" role="form">
+			<div class="form-group">
+				<label> Name </label>
+				<input type="text" class="form-control" ng-model="user.displayName" name="name">
+			</div>
+			<div class="form-group">
+				<label>Email</label>
+				<input type="text" class="form-control" ng-model="user.email" name="email">
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" class="form-control" ng-model="user.password" name="password">
+			</div>
+
+			<button type="submit" class="btn btn-warning btn-lg">Signup</button>
+		</form>
+
+		<hr>
+		        <p> Register with:</p>
+				
+			<div ng-controller="socialConnectCtrl">
+				<button ng-click="facebookConnect()" ng-disabled="disablePopup" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook </button> 
+				  <button ng-click="googleConnect()" ng-disabled="disablePopup" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</button>
+				  <button ng-click="twitterConnect()" ng-disabled="disablePopup" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter </button>
+			</div>
+
+		<p>Already have an account? <a href="/#!/login">Login</a></p>
+		<p>Or go <a href="/#!/">home</a>.</p>
+
+	</div>
+</div>

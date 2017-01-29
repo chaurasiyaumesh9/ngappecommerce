@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<base href="/"> 
+	<title> An E-commerce Web App using MEAN Stack </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="google-site-verification" content="Z686TVbvd51-En3-YD9BOhFwcTr0ytN-EDDM03bh9hs" />
+	<meta name="description" content="An E-commerce Web App using MEAN Stack. Open source technologies by adapty solutions pvt ltd.">
+	<meta name="keywords" content="ecommerce app development mean stack,HTML,CSS,XML,JavaScript, ecommerce, mean, meanstack, angular, angularjs, mongoDB, mongo, nodejs, node, express, expressjs, HTML5, CSS3, js, JS, JSON, AJAX, json, ajax, bootstrap, twitter bootstrap, mean stack ecommerce heroku,mean stack ecommerce, mean stack, moltion, flipkart, snapdeal, amazon, flipkart ecommerce, flipkart e-commerce, e-commerce, ecommerce-websites, mean stack ecommerce heroku opensource, mean stack ecommerce heroku framework, social media, media, advertisement, advertising, practical ecommerce">
+	<meta name="author" content="Umesh Chaurasiya / umesh.chaurasiya@adapty.com">
+
+	<meta name="fragment" content="!">
+
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">	
+	<link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css" >
+	<link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick.css">
+	<link rel="stylesheet" href="../bower_components/slick-carousel/slick/slick-theme.css">
+	<link rel="stylesheet" href="assets/stylesheets/star-rating.css">	
+	<link rel="stylesheet" href="assets/stylesheets/style.css">	
+
+</head>
+<body ng-app="sampleCartApp" zoom-container>
+	<div class="wrapper" >
+		<div class="top-menu" ng-show="!fullmode" ng-controller="navCtrl">
+			<nav class="navbar navbar-default">
+			  <div class="container">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" ng-click="navbarCollapsed = !navbarCollapsed">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>                        
+				  </button>
+				  <a class="navbar-brand" href="#!/" ng-click="hideNav()"><i class="fa fa-shield"></i> MEAN is awesome!</a>
+				</div>
+				<div class="collapse navbar-collapse" uib-collapse="navbarCollapsed">
+				  <ul class="nav navbar-nav">
+					<li> <a href="#!/" ng-click="hideNav()"><span class="fa fa-home"></span> Home</a> </li>
+					<li ng-repeat="category in categories" ><a href="#!/products/{{ category._id }}" ng-click="hideNav(); setActiveCategory(category)"> {{category.name}} </a></li>
+				  </ul>
+				  <ul class="nav navbar-nav navbar-right">
+					<li> <a href="#!/login" ng-hide="activeUser" ng-click="hideNav()"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login </a> </li>
+					<li> <a href="#!/signup" ng-hide="activeUser" ng-click="hideNav()"> <span class="fa fa-user-plus"></span>  Sign Up </a> </li>
+					<li> <a href="#!/logout" ng-click="hideNav();logout()" ng-show="activeUser"> <span class="fa fa-sign-out"></span> Logout </a> </li>
+					<li> <a href="#!/profile" ng-show="activeUser" ng-click="hideNav()"> <span class="glyphicon glyphicon-user"></span> My Profile </a> </li>
+					<li> <a href="#!/cart" ng-click="hideNav()"> <i class="fa fa-shopping-cart" aria-hidden="true"> </i> Your Cart </a> </li>
+				  </ul>
+				</div>
+			  </div>
+			</nav>
+		</div>
+		<div class="view-container">
+			<div ng-view class="view-frame"></div>
+		</div>
+		<footer class="footer" ng-show="!fullmode">
+			<div class="container">
+				<p class="text-muted text-center"> @copyright UMCH Corp Inc 2016 </p>
+			</div>
+		</footer>
+	</div>
+	
+ <script src="../bower_components/angular/angular.min.js"> </script>
+ <script src="../bower_components/angular-route/angular-route.min.js"> </script>
+ <script src="../bower_components/angular-animate/angular-animate.min.js"> </script>
+ <script src="../bower_components/angular-bootstrap/ui-bootstrap.min.js"> </script>
+ <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"> </script>
+ <script src="../bower_components/angular-aria/angular-aria.min.js"> </script>
+ <script src="../bower_components/angular-material/angular-material.min.js"> </script>
+ <script src="../bower_components/jquery/dist/jquery.min.js"> </script>
+ <script src="../bower_components/elevatezoom/jquery.elevatezoom.js"></script>
+ <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"> </script>
+ <script src="../bower_components/slick-carousel/slick/slick.min.js"> </script>
+
+ <script src="assets/scripts/services/index.js"> </script>
+ <script src="assets/scripts/directives/index.js"> </script>
+ <script src="assets/scripts/filters/index.js"> </script>
+ <script src="assets/scripts/controllers/index.js"> </script>
+ <script src="assets/scripts/controllers/navCtrl.js"> </script>
+ <script src="assets/scripts/controllers/hompageCtrl.js"> </script>
+ <script src="assets/scripts/controllers/loginCtrl.js"> </script>
+ <script src="assets/scripts/controllers/signupCtrl.js"> </script>
+ <script src="assets/scripts/controllers/profileCtrl.js"> </script>
+ <script src="assets/scripts/controllers/socialConnectCtrl.js"> </script>
+ <script src="assets/scripts/controllers/ratingController.js"> </script>
+ <script src="assets/scripts/controllers/productListingCtrl.js"> </script>
+ <script src="assets/scripts/controllers/productDetailsCtrl.js"> </script>
+ <script src="assets/scripts/controllers/productFullmodeCtrl.js"> </script>
+ <script src="assets/scripts/controllers/cartCtrl.js"> </script>
+ <script src="assets/scripts/controllers/checkoutCtrl.js"> </script>
+ <script src="assets/scripts/app.js"> </script>
+ 
+</body>
+</html>

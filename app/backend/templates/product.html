@@ -1,0 +1,276 @@
+<div ng-cloak>
+	<md-content>
+		<md-tabs md-dynamic-height md-border-bottom > 
+			<md-tab label="General" >
+				 <md-content class="md-padding">  
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="name"> Product Name : </label>
+								<input type="text" name="name" id="name" class="form-control" ng-model="product.name">
+							</div>	
+						</div>	
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="title"> Product Title : </label>
+								<input type="text" name="title" id="title" class="form-control" ng-model="product.title">
+							</div>	
+						</div>	
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="SKU"> SKU ( should be unique ) : </label>
+								<input type="text" name="SKU" id="SKU" class="form-control" ng-model="product.SKU">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<div class="form-group">
+							<label for="valid_from"> Valid From : </label>
+							<md-content>
+								<md-datepicker ng-model="product.valid_from" md-placeholder="Start Date"></md-datepicker>
+							</md-content>
+						</div>		
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="valid_till"> Valid Till : </label>
+								<md-content>
+									<md-datepicker ng-model="product.valid_till" md-placeholder="End Date"></md-datepicker>
+								</md-content>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="description"> Description : </label>
+								<textarea rows="5" columns="125" name="description" id="description" class="form-control" ng-model="product.description"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="short_description"> Short Description : </label>
+								<textarea rows="5" columns="125" name="short_description" id="short_description" class="form-control" ng-model="product.short_description"></textarea>
+							</div>
+						</div>
+					</div>
+				 </md-content>
+			</md-tab>
+			<md-tab label="Prices">
+				<md-content class="md-padding">  
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="price"> Product Price : </label>
+								<input type="number" name="price" id="price" class="form-control" ng-model="product.price">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="special_price"> Special Price : </label>
+								<input type="number" name="special_price" id="special_price" class="form-control" ng-model="product.special_price">
+							</div>
+						</div>
+					</div>
+				</md-content>
+			</md-tab>
+			<md-tab label="Images">
+				<md-content class="md-padding" > 
+					<div ng-hide="product.images.length > 0 || product.toBeUploaded.length > 0">
+						<h1> No Images Yet!  </h1>
+						<h5> Get it uploaded now...</h5>
+					</div>
+						<div class="btn btn-default" ngf-select="showFiles($files, $invalidFiles)" accept="image/*" ngf-max-size="20MB" ng-model="files" ngf-multiple="true"> Select Files </div>
+						<!-- <div multiple ="showFiles($files, $invalidFiles)" accept="image/*" ngf-max-size="20MB"> Select Files </div> -->						 
+						
+					 
+					 <table class="table table-striped" ng-show="product.images.length > 0 || product.toBeUploaded.length > 0">
+						<thead >
+							<tr>
+								<th> Image </th>
+								<th> Large Image </th>
+								<th> Small Image </th>
+								<th> Thumbnail </th>
+								<th> Remove </th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr ng-repeat="image in product.images" ng-if="!image.deleted">
+								<td> 
+									<img ng-src="{{ image.imgdata.secure_url }}" class="img-preview" />
+								</td>
+								<td> <input type="checkbox" ng-model="image.role.large" > </td>
+								<td> <input type="checkbox" ng-model="image.role.small" > </td>
+								<td> <input type="checkbox" ng-model="image.role.thumbnail" > </td>
+								<td> <a class="btn btn-danger" href="" ng-click="removeProductImage(product.images, image )"> <i class="fa fa-trash"></i> </a> </td>
+							</tr>
+							
+							<tr ng-repeat="image in product.toBeUploaded" ng-hide="image.deleted">
+								<td> 
+									<img ngf-src="image" class="img-preview" />
+								</td>
+								<td> <input type="checkbox" ng-model="image.role.large" > </td>
+								<td> <input type="checkbox" ng-model="image.role.small" > </td>
+								<td> <input type="checkbox" ng-model="image.role.thumbnail" > </td>
+								<td> <a class="btn btn-danger" href="" ng-click="removeProductImage( product.toBeUploaded, image )"> <i class="fa fa-trash"></i> </a> </td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- <a class="btn btn-primary" ng-click="uploadFiles( product );" href=""> Upload Files </a> -->
+					<!-- <ul class="progress-status">
+						<li ng-repeat="f in product.images" style="font:smaller">{{f.name}} {{f.$errorParam}}
+						 
+						  <div class="progress" ng-show="f.progress >= 0">
+								<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{f.progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+						  </div>
+
+						</li>
+							<li ng-repeat="f in errFiles" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}
+							</li> 
+					  </ul>  -->
+
+					 <!-- <button ng-click="uploadFiles( product )" class="btn btn-primary pull-right"> Upload Files</button>  -->
+				</md-content>
+			</md-tab>
+			<md-tab label="Categories">
+				<md-content class="md-padding">  
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="name"> Categories : </label>
+								<div class="categories">
+									<div class="category" ng-repeat="category in product.categories" >
+										<input type="checkbox" ng-model="category.selected" > {{ category.name }} 
+										<!-- <md-checkbox class="md-primary" ng-model="category.selected" aria-label="{{ category.name }}">
+											{{ category.name }}
+										</md-checkbox>  -->
+									 </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</md-content>
+			</md-tab>
+			<md-tab label="Inventory">
+				<md-content class="md-padding">  
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="quantity"> Quantity ( Availabale In Stock ) : </label>
+								<input type="number" name="quantity" id="quantity" class="form-control" ng-model="product.quantity">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="in_stock"> In-Stock : </label>
+								<input type="checkbox" name="in_stock" id="in_stock" ng-model="product.in_stock" >
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="discontinued"> Discontinued : </label>
+								<input type="checkbox" name="discontinued" id="discontinued" ng-model="product.discontinued" >
+							</div>
+						</div>
+					</div>
+				</md-content>
+			</md-tab>
+			<md-tab label="Attributes">
+				<md-content class="md-padding">  
+					<div class="row">
+						<div class="col-md-3">
+							<div class="panel panel-info">
+								<div class="panel-heading clearfix">  
+									<span class="fwb"> Sets Available/ Chosen </span>
+									<div  class="pull-right">
+										<span class=""> {{ product.attribute_sets.length }} </span> of <span class=""> {{ availableAttributeSets.length }} </span>
+									</div>
+								</div>
+								<div class="panel-body mxh310">
+									<ul style="margin:0;padding:0;list-style:none;">
+										<li ng-repeat="set in availableAttributeSets"  > 
+											<label class="input" > <input type="checkbox" ng-model="bool[$index]" ng-change="changeMethod($index, set)"> <span class="">{{ set.name }}</span> </label>
+										</li>
+									</ul>
+								</div>
+							  </div>
+						</div>
+						<div class="col-md-9">
+							<!-- <pre>{{ product.attribute_sets | json}}</pre>	 -->	
+							<div class="jumbotron text-center" ng-hide="product.attribute_sets.length > 0">
+								<h2> No attribute-set chosen so far! </h2>
+							</div>
+							<uib-accordion close-others="true" ng-show="product.attribute_sets.length > 0">
+								<!-- <uib-accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+								  This content is straight in the template.
+								</uib-accordion-group> -->
+								<!-- <uib-accordion-group heading="{{ set.name }}" ng-repeat="set in product.attribute_sets"> -->
+								<uib-accordion-group ng-repeat="set in product.attribute_sets">
+									<uib-accordion-heading >
+										 {{ set.name }} <!-- <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status[$index].open, 'glyphicon-chevron-right': !status[$index].open}"></i> -->
+									  </uib-accordion-heading>
+								  <form class="form-horizontal" role="form">
+										<div class="form-group clearfix" ng-repeat="at in set.attributes" >
+										  <label class="control-label col-sm-4" for="{{ at.code }}"> {{ at.label }} </label>
+										  <div class="col-sm-8">
+											<input type="text" ng-model="at.newText" class="form-control" id="{{ at.code }}" ng-if="at.type === 'Open Text'" placeholder="Enter {{ at.label }}" >
+											
+											<div class="container_fluid" ng-if="at.type === 'Single Choice'">
+												<div class="row">
+													<div class="col-sm-8">
+														<input type="text" ng-model="at.newText" class="form-control" placeholder="add new {{ at.label }} here" >	
+													</div>
+													<a class="btn btn-primary" href=""  ng-click="addToList( at )"> Add New {{ at.label }} </a>
+												</div>
+												<div class="row">
+													<div class="col-sm-12">
+														<ul class="unstyled">
+															 <li ng-repeat="v in at.values">
+															  <label class="checkbox fwn">
+																<input type="checkbox" ng-model="v.disabled">
+																<span class="disabled-{{v.disabled}}"> {{v.text}} </span>
+															  </label>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											
+
+										  </div>
+										</div>
+
+										<div class="form-group clearfix">        
+										 <!--  <div class="col-sm-12">
+											<a type="submit" class="btn btn-default pull-right" href="">Submit</a>
+										  </div> -->
+										</div>
+									</form>
+								</uib-accordion-group>
+							 </uib-accordion>
+						</div>
+					</div>
+					<!-- <pre >{{ set | json }}</pre> -->
+									
+					<!-- <a href="#/attribute-set" class="btn btn-primary"> Manage Attribute Set </a> -->
+				</md-content>
+			</md-tab>
+		</md-tabs>
+	</md-content>
+	<!-- https://angular-ui.github.io/bootstrap/#/accordion -->
+</div>
+

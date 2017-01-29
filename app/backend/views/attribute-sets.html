@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		 <h1> <i class="fa fa-wrench"></i> Manage Attribute Set </h1>
+	</div>
+</div>
+
+ <loader></loader>
+<div class="attribute-sets-page" ng-hide="loading">
+	<div class="container" ng-show="attributeSets.length>0">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th > Set Name </th>
+					<th> </th>
+				</tr>
+			</thead> 
+			<tbody>
+				<tr ng-repeat="at in attributeSets">
+					<td> {{ at.name }} </td>
+					<td> <a href="#/attribute-sets/{{at._id}}"> View </a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="container">
+		<a class="btn btn-primary" href="#/attribute-sets/add-new"> <i class="fa fa-plus"></i> Add New Set </a>
+	</div>
+</div>

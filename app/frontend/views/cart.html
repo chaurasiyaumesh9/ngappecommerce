@@ -1,0 +1,117 @@
+ <!-- <div class="container">
+	<div class="jumbotron text-center">
+		 <h2> <i class="fa fa-shopping-cart"></i> {{ message }} </h2>
+	</div>
+</div>   -->
+<loader></loader>
+<div class="view-cart-page" ng-hide="loading">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+			</div>
+			
+		</div>
+		
+		<div class="row" >
+			<div class="col-md-12 col-xs-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<div class="row">
+								<div class="col-md-6">
+									<h5 class="pull-left"> <i class="fa fa-shopping-cart" aria-hidden="true"> </i> Your Shopping Cart </h5>
+
+								</div>
+								<div class="col-md-6">
+									<a ng-if="cart.length>0" href="#!/products" class="btn btn-primary btn-md pull-right">
+										<span class="glyphicon glyphicon-share-alt"></span> Continue Shopping
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body" ng-if="cart.length==0 || !cart">
+						<div class="well-md">
+							<h4> You have no product(s) in cart right now. </h4>
+							<a ng-if="cart.length==0 || !cart" href="#!/products" class="btn btn-primary btn-md">
+										<span class="glyphicon glyphicon-share-alt"></span> Add Product(s) To Your Cart
+									</a>
+						</div>
+					</div>
+					<div class="panel-body" ng-if="cart.length>0">
+						<div class="header" >
+							<div class="row">
+								<div class="col-md-2 col-xs-12 text-center">
+									<h5> <strong> Product Picture </strong></h5>
+								</div>
+								<div class="col-md-4 col-xs-12 text-center">
+									<h5> <strong> Product Name </strong></h5>
+								</div>
+								<div class="col-md-6 col-xs-12 ">
+									<div class="col-md-4 col-xs-12 text-center"> <h5> <strong> Price </strong></h5> </div>
+									<div class="col-md-2 col-xs-12 text-center"> <h5> <strong> Quantity </strong></h5> </div>
+									<div class="col-md-3 col-xs-12 text-center"> <h5> <strong> Subtotal </strong></h5> </div>
+									<div class="col-md-3 col-xs-12 text-center"> <h5> <strong> Remove </strong></h5> </div>
+								</div>
+							</div>
+							<hr/>
+						</div>
+						<div ng-repeat="product in cart">
+							<div class="row" >
+								<div class="col-md-2 col-xs-12">
+									<div class="product-image-wrapper">
+										<a href="#!/product/{{product.item._id}}"> <img ng-src="{{ product.item.images | smallImg }}" class="product-image"   /> </a>	
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-12">
+									<p class="product-name">  <a href="#!/product/{{product.item._id}}">  <span style="font-weight:bold;">{{ ::product.item.name }}</span>  <span class="title">{{ product.item.title }}</span></a></p>
+									<h4 class="hidden"> <small> {{ ::product.item.short_description }} </small></h4>
+
+								</div>
+								<div class="col-md-6 col-xs-12">
+									<div class="col-md-4 col-xs-3 text-center">
+										<h5> <strong> <i class="fa fa-inr"></i>{{ (product.item.special_price || product.item.price) | currency:'':0}}</strong> x </h5>
+									</div>
+									<div class="col-md-2 col-xs-3 text-center">
+										<input type="text" class="form-control input-sm" ng-model="product.qty">
+									</div>
+									<div class="col-md-3 col-xs-3 text-center">
+										<h5> <strong> <i class="fa fa-inr"></i>{{ ((product.item.special_price || product.item.price) * product.qty) | currency:'':0}}</strong></h5>
+									</div>
+									<div class="col-md-3 col-xs-3 text-center">
+										<button class="btn btn-danger btn-sm" ng-click="removeFromCart( product )"> <span class="glyphicon glyphicon-trash"></span></button>
+									</div>
+								</div>
+							</div>
+							<hr/>
+						</div>
+						<div>
+							<div class="row">
+								<div class="col-md-6 col-xs-12 text-left">
+									<a class="btn btn-danger btn-md" ng-href="" ng-click="clearCart()"> Clear Your Cart </a>
+								</div>
+								<div class="col-md-3 col-xs-12 text-right">
+									<h5> Added/ Modified Items? </h5>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<a class="btn btn-default btn-md btn-block" ng-href="" ng-click="updateCart( cart )"> Update Cart </a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer" ng-if="cart.length>0">
+						<div class="row">
+							<div class="col-md-9 col-xs-12 text-right">
+								<h4> <strong>Total : <i class="fa fa-inr"></i> {{ cart | getCartTotalPrice | currency:'' }} </strong></h4>
+							</div>
+							<div class="col-md-3 col-xs-12">
+								<button class="btn btn-success btn-md btn-block"> Checkout </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

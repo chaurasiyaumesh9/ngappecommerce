@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Welcome {{ user.local.displayName ||  user.facebook.name || user.google.name }} 
+		
+		<!-- - {{ user.local.email || user.facebook.email || user.google.email }} --></h1>
+         <!-- <a href="#!/logout" ng-click="logout()" class="btn btn-default btn-sm">Logout</a>  -->
+    </div>
+
+	<loader></loader>
+     <div class="row">
+
+        
+        <div class="col-sm-12" ng-show="user.local">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                    <p>
+                        <strong>id</strong>: {{ user._id }}<br>
+                        <strong>email</strong>: {{ user.local.email }}<br>
+                        <strong>password</strong>: {{ user.local.password }}
+                    </p>
+
+            </div>
+        </div>
+
+	
+        <div class="col-sm-12" ng-show="user.facebook">
+            <div class="well">
+                <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+
+                    <p>
+						<img ng-src="{{ user.facebook.profilePic }}" /> <br/>
+                        <strong>id</strong>: {{ user.facebook.id }}<br>
+                        <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.facebook.token }}</span><br>
+                        <strong>email</strong>: {{ user.facebook.email }}<br>
+                        <strong>name</strong>: {{ user.facebook.name }}
+                    </p>
+            </div>
+        </div>
+
+		<div class="col-sm-12" ng-show="user.google">
+            <div class="well">
+                <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google</h3>
+
+                    <p>
+						<img ng-src="{{ user.google.profilePic }}" /> <br/>
+                        <strong>id</strong>: {{ user.google.id }}<br>
+                        <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.google.token }}</span><br>
+                        <strong>email</strong>: {{ user.google.email }}<br>
+                        <strong>name</strong>: {{ user.google.name }}
+                    </p>
+            </div>
+        </div>
+
+		<div class="col-sm-12" ng-show="user.twitter">
+            <div class="well">
+                <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
+                    <p>
+						<img ng-src="{{ user.twitter.profilePic }}" /> <br/>
+                        <strong>id</strong>: {{ user.twitter.id }}<br>
+                        <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.twitter.token }}</span><br>
+                        <strong>username</strong>: {{ user.twitter.username }}<br>
+                        <strong>name</strong>: {{ user.twitter.name }}
+                    </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

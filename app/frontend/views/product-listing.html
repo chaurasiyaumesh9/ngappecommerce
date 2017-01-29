@@ -1,0 +1,60 @@
+<div class="container">
+	<ol class="breadcrumb">
+	  <li class="breadcrumb-item"><a href="#!/">Home</a></li>
+	  <li class="breadcrumb-item active"> {{ activeCategory.name || listingTitle }}  </li>
+	</ol>
+</div>
+
+<loader></loader> 
+<div id="main" ng-hide="loading" class="container" >
+	<div class="row">
+		<div class="col-md-12">
+			<div class="container_fluid">
+				<div class="row">
+					
+					<div class="col-xs-12">
+						<div class="bar">
+							<div class="pull-left">
+								<div class="btn-group" uib-dropdown >
+								  <button type="button" class="btn btn-default btn-md" uib-dropdown-toggle style="min-width:150px;">
+									{{ activeFilter.caption || 'Look-up By'}}  <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" uib-dropdown-menu role="menu" >
+									<li ng-repeat="filter in filters" role="menuitem">  <a href="" ng-click="setActiveFilter( filter )" > {{ filter.caption }} </a> </li>
+									</ul>
+								</div>
+								<a href="" ng-click="resetFilter()" > <i class="fa fa-refresh"></i> </a>
+							</div>
+							<a class="view list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
+							<a class="view grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"></a>
+						</div>	
+					</div>
+				</div>
+				<div class="row grid" ng-show="layout == 'grid'" >
+					<div class="col-md-12 col-sm-12 col-xs-12"  >
+						<div class="container_fluid" >
+							<div class="row">
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 anim-grid-check" ng-repeat="product in productList | orderBy:sortType:sortReverse:defaultFilter">
+									<product-grid-view></product-grid-view>
+									<hr/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row list" ng-show="layout == 'list'" >
+					<div class="col-md-12"  >
+						<div ng-repeat="product in productList | orderBy:sortType:sortReverse:defaultFilter" class="anim-grid-check">
+							<product-list-view></product-list-view>
+							<hr ng-if="!$last"/>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+

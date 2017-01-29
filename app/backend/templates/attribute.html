@@ -1,0 +1,23 @@
+<div>
+	<div class="form-group">
+		<label for="label"> Attribute label : </label>
+		<input type="text" name="label" id="label" class="form-control" ng-model="attribute.label" >
+	</div>
+	<div class="form-group">
+		<label for="code"> Attribute Code : </label>
+		<input type="text" name="code" id="code" class="form-control" ng-model="attribute.code" >
+	</div>
+	<div class="form-group">
+		<label for="type"> Component Type : </label>
+		<div class="btn-group" uib-dropdown >
+		  <button type="button" class="btn btn-default" uib-dropdown-toggle >
+			{{ attribute.type || 'Choose Type'}} <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" uib-dropdown-menu role="menu" >
+			<li role="menuitem">  <a href="" ng-click="attribute.type = 'Single Choice'" > Single Choice </a> </li>
+			<li role="menuitem">  <a href="" ng-click="attribute.type = 'Open Text'" > Open Text </a> </li>
+			</ul>
+		</div>
+	</div>
+<div>
+	

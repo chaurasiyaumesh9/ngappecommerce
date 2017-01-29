@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="jumbotron text-center">
+		 <h1> <i class="fa fa-cogs"></i> {{ message }} </h1>
+	</div>
+</div>
+
+<loader></loader>
+<div class="category-listing-page" ng-hide="loading">
+	<div class="container">
+		<!-- <div class="alert alert-danger" ng-show="deletionSuccess">
+		  <strong>{{ deleteCount }} </strong> Categorie(s) deleted successfully!
+		</div> -->
+		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"> {{ deleteCount }} {{alert.msg}}</uib-alert>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th> <input type="checkbox" ng-model="selectAll" ng-click="checkAll()"  /> </th>
+					<th> Category Name </th>
+					<th> Active </th>
+					<th> Created @ </th>
+					<th> Updated @ </th>
+					<th> </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="category in categories">
+					<td> <input type="checkbox" ng-model="category.selected" ng-click="checkIndividual()" /> </td>
+					<td> {{ category.name }} </td>
+					<td> {{ category.active | yesNo }} </td>
+					<td> {{ category.created_at | date:"MM/dd/yyyy 'at' h:mma"  }} </td>
+					<td> {{ category.updated_at  | date:"MM/dd/yyyy 'at' h:mma" }} </td>
+					<td> <a href="#/categories/{{category._id}}" > <!-- <i class="fa fa-pencil"></i> --> View </a>  </td>
+				 </tr>
+			 </tbody>
+		</table>
+	</div>
+	<div class="container">
+		<a class="btn btn-primary" href="#/categories/add-new">
+			<i class="fa fa-plus"></i> Add New
+		</a>
+		<button class="btn btn-danger" ng-disabled="!showDelete" ng-click="deleteCategories()"> <i class="fa fa-trash"></i> Delete </button>
+	 </div>
+</div>
+
+		
+ 
