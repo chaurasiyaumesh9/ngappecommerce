@@ -6,8 +6,8 @@ var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var TwitterStrategy  = require('passport-twitter').Strategy;
 
 
-var u = appconfig.db.conn.model('User', UserSchema);
-var User = new u;
+var User = appconfig.db.conn.model('User', UserSchema);
+//var User = new u;
 //console.log('User : ',User);
 
 module.exports = function( passport ){
