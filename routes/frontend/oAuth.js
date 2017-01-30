@@ -5,7 +5,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var TwitterStrategy  = require('passport-twitter').Strategy;
 
-
+console.log('UserSchema : ',UserSchema);
 var User = appconfig.db.conn.model('User', UserSchema);
 //var User = new u;
 //console.log('User : ',User);
