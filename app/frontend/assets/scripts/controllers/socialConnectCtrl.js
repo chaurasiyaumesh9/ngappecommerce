@@ -28,7 +28,9 @@ angular.module('sampleCartApp.controller').controller('socialConnectCtrl', funct
 				$scope.disablePopup = false;
 				$interval.cancel( catchInterval );
 			}
-			$http.get('/loggedin').success( onSuceessCallback );
+			$http.get('/loggedin').then( onSuceessCallback,function(){
+				console.log("error while managing social login");
+			} );
 		}, 200);
 	}
 	

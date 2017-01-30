@@ -16,23 +16,20 @@
     "tests"
   ],
   "dependencies": {
-    "angular-route": "1.6.1",
-    "angular-material": "1.1.1",
-    "angular": "1.6.1",
+    "angular-route": "latest",
+    "angular-material": "latest",
+    "angular": "latest",
     "bootstrap-datepicker": "latest",
-    "bootstrap": "3.3.5",
+    "bootstrap": "latest",
     "font-awesome": "latest",
     "ng-file-upload": "latest",
     "slick-carousel": "latest",
-    "angular-bootstrap": "2.1.1",
+    "angular-bootstrap": "latest",
     "requirejs": "latest",
     "domReady": "requirejs-domready#^2.0.1",
     "angular-filepicker": "^1.1.4",
     "angular-elevate-zoom": "^1.0.3",
     "elevatezoom": "^2.2.3",
     "chart.js": "1.0.2"
-  },
-  "resolutions": {
-    "angular": "1.5"
   }
 }

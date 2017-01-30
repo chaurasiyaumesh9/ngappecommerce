@@ -47,7 +47,7 @@ config.social = {
 		}
 	}
 }
-config.db.conn =  mongoose.createConnection( config.db.prod.url , { server:{ poolSize:2 } }, function(err){
+config.db.conn =  mongoose.createConnection( config.db.prod.url , { server:{ poolSize:2 }, db: { native_parser: true }}, function(err){
 	console.log('DB Callback');
 	if (err) {
 		console.log(err);

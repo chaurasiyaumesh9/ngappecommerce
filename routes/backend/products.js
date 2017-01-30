@@ -23,6 +23,9 @@ var storage =   multer.diskStorage({
 });
 */
 
+
+
+
 var storage =   multer.diskStorage({
   filename: function (req, file, callback) {
 	 // console.log(req.params.id );
@@ -35,8 +38,8 @@ var storage =   multer.diskStorage({
   }
 });
 
-console.log('appconfig.db.conn : ',appconfig.db.conn.model('Product'));
-var Product = appconfig.db.conn.model('Product', ProductSchema);
+//console.log('appconfig.db.conn : ',appconfig.db.conn.model('Product'));
+var Product = appconfig.db.conn.model('Product');
 //var Product = new ProductSchema;
 var products = {
 	getProductList: function (req, res){

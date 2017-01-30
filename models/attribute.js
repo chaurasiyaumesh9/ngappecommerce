@@ -21,5 +21,5 @@ attributeSchema.pre('save', function(next) {
   next();
 });
 
-var Attribute = mongoose.model('Attribute', attributeSchema);
+var Attribute = mongoose.model('Attribute', attributeSchema, 'Attribute');
 module.exports = Attribute;

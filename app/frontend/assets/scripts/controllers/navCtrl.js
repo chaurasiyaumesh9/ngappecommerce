@@ -14,9 +14,16 @@ angular.module('sampleCartApp.controller').controller('navCtrl', function( $scop
 		//$scope.loading = true;
 	}
 	$scope.logout = function(){
-		$http.post('/logout').success( function(){
+		// $http.post('/logout').success( function(){
+		// 	$rootScope.activeUser = null;
+		// 	$location.url('/');
+		// });
+
+		$http.post('/logout').then( function(){
 			$rootScope.activeUser = null;
 			$location.url('/');
+		},function(err){
+			console.log("exception while logging out");
 		});
 	}
 	$scope.hideNav = function(){

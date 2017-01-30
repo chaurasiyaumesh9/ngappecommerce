@@ -21,7 +21,7 @@ var ProductSchema = new Schema({
 	categories:{ type : Array , "default" : [] },
 	images:{ type : Array , "default" : [] },
 	attribute_sets:{ type : Array , "default" : [] }
-});
+},{ collection: 'Product' });
 
 
 ProductSchema.pre('save', function(next) {
@@ -38,7 +38,9 @@ ProductSchema.pre('save', function(next) {
 
   next();
 });
+
+
 //console.log('ProductSchema : ',ProductSchema);
-var Product = mongoose.model('Product', ProductSchema);
+var Product = mongoose.model('Product', ProductSchema, 'Product');
 //console.log('Product Model : ',Product);
 module.exports = Product;

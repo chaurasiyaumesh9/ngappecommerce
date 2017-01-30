@@ -81,7 +81,7 @@ cartApp.run(function($rootScope) {
 function checkLogin( $q, $timeout, $http, $location, $rootScope ){
 	var deferred = $q.defer();
 
-	$http.get('/loggedin').success( function( user ){
+	$http.get('/loggedin').then( function( user ){
 		$rootScope.errorMessage = null;
 		if ( user !== '0' )
 		{
@@ -92,6 +92,8 @@ function checkLogin( $q, $timeout, $http, $location, $rootScope ){
 			deferred.reject();
 			$location.url('/login');
 		}
+	},function(err){
+		console.log("exception while checkLogin");
 	});
 	return deferred.promise;
 }
@@ -99,7 +101,7 @@ function checkLogin( $q, $timeout, $http, $location, $rootScope ){
 function checkLogin2( $q, $timeout, $http, $location, $rootScope ){
 	var deferred = $q.defer();
 
-	$http.get('/loggedin').success( function( user ){
+	$http.get('/loggedin').then( function( user ){
 		$rootScope.errorMessage = null;
 		if ( user !== '0' )
 		{
@@ -108,16 +110,27 @@ function checkLogin2( $q, $timeout, $http, $location, $rootScope ){
 		}else{
 			deferred.resolve();
 		}
+	},function(err){
+		console.log("exception while checkLogin2");
 	});
 	return deferred.promise;
 }
 
 
 function getActiveUser( $http, $rootScope ){
-	$http.get('/loggedin').success( function( user ){
+	/*$http.get('/loggedin').success( function( user ){
 		if ( user !== '0' )
 		{
 			$rootScope.activeUser = user;
 		}
+	});*/
+
+	$http.get('/loggedin').then( function( user ){
+		if ( user !== '0' )
+		{
+			$rootScope.activeUser = user;
+		}
+	},function(err){
+		console.log("error while fetching data");
 	});
 }

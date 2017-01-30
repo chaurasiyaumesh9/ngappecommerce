@@ -6,12 +6,13 @@ var ProductSchema = require('../../models/product');
 var mongoose = require('mongoose');
 var frontendsession      = require('express-session');
 
-console.log('appconfig.db.conn : ',appconfig.db.conn);
-var Product = appconfig.db.conn.model('Product', ProductSchema);
-//var Product = new ProductSchema;
-var Category = appconfig.db.conn.model('Category', CategorySchema);
-//var Category = new CategorySchema;
-
+//console.log('appconfig.db.conn : ',appconfig.db.conn);
+//var Product = appconfig.db.conn.model('Product', ProductSchema);
+var Product = appconfig.db.conn.model('Product');
+//console.log('Product : ',Product);
+//var Category = appconfig.db.conn.model('Category', CategorySchema);
+var Category = appconfig.db.conn.model('Category');
+//console.log('Category : ',Category);
 
 // note added
 var categories = {
@@ -19,6 +20,7 @@ var categories = {
 		Category.find({active:true}, function(err, results) {
 		  if (!err)
 			{
+				//console.log('getCategories results : ',results);
 			 	res.json( results );
 			}else{
 				console.log('Error while performing the query..check function categories.getCategories() for more details..', err );
@@ -59,6 +61,7 @@ var products = {
 		Product.find( { categories: { $elemMatch: { selected: true, _id: cId } }, discontinued:{$ne: true} } , function(err, results) {
 			if (!err)
 			{
+				console.log('results : ',results);
 				res.json( results );
 			}else{
 				console.log('Error while performing the query..check function products.getProductsByCategory() for more details..', err );
