@@ -6,11 +6,11 @@ var ProductSchema = require('../../models/product');
 var mongoose = require('mongoose');
 var frontendsession      = require('express-session');
 
-
+console.log('appconfig.db.conn : ',appconfig.db.conn);
 var Product = appconfig.db.conn.model('Product', ProductSchema);
-//var Product = new p;
+//var Product = new ProductSchema;
 var Category = appconfig.db.conn.model('Category', CategorySchema);
-//var Category = new c;
+//var Category = new CategorySchema;
 
 
 // note added

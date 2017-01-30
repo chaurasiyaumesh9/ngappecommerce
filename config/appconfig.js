@@ -47,15 +47,15 @@ config.social = {
 		}
 	}
 }
-
-
-config.db.conn = mongoose.createConnection( config.db.prod.url , { server:{ poolSize:2 } }, function(err){
+config.db.conn =  mongoose.createConnection( config.db.prod.url , { server:{ poolSize:2 } }, function(err){
+	console.log('DB Callback');
 	if (err) {
-        console.log(err);
-    }else{
+		console.log(err);
+	}else{
 		console.log('connected successfully!');
 	}
 });
+
 
 module.exports = config;
 

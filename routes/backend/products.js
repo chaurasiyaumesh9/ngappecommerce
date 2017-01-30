@@ -35,9 +35,9 @@ var storage =   multer.diskStorage({
   }
 });
 
-
-var p = appconfig.db.conn.model('Product', ProductSchema);
-var Product = new p;
+console.log('appconfig.db.conn : ',appconfig.db.conn.model('Product'));
+var Product = appconfig.db.conn.model('Product', ProductSchema);
+//var Product = new ProductSchema;
 var products = {
 	getProductList: function (req, res){
 		/*Product.find({ is_deleted: false }, function(err, results) {

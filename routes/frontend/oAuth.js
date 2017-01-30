@@ -1,14 +1,13 @@
+var mongoose = require('mongoose');
 var appconfig = require('../../config/appconfig');
-var UserSchema            = require('../../models/user');
+var UserSchema            = require('../../models/user').User;
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var TwitterStrategy  = require('passport-twitter').Strategy;
-
-console.log('UserSchema : ',UserSchema);
+//console.log('appconfig : ',appconfig.db.conn.model);
 var User = appconfig.db.conn.model('User', UserSchema);
-//var User = new u;
-//console.log('User : ',User);
+//var User = new UserSchema;
 
 module.exports = function( passport ){
 	

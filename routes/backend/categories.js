@@ -5,8 +5,8 @@ var path = require('path');
 var mongoose = require('mongoose');
 
 
-var c = appconfig.db.conn.model('Category', CategorySchema);
-var Category = new c;
+var Category = appconfig.db.conn.model('Category', CategorySchema);
+//var Category = new CategorySchema;
 
 var categories = {
 	getCategories: function (req, res){

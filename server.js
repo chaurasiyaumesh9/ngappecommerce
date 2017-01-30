@@ -4,6 +4,7 @@ var path = require('path');
 var passport = require('passport');
 var flash = require('connect-flash');
 var morgan       = require('morgan');
+var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var session      = require('express-session');
@@ -13,6 +14,8 @@ var backend =  require('./routes/backend/backend');
 var frontend =  require('./routes/frontend/frontend')(passport);
 var preRendered = require('prerender-node');
 var cloudinary = require('cloudinary');
+
+
 
 
 process.env.NODE_ENV = 'production';

@@ -4,8 +4,8 @@ var fs = require('fs');
 var path = require('path');
 var mongoose = require('mongoose');
 
-var a = appconfig.db.conn.model('Attribute', AttributeSchema);
-var Attribute = new a;
+var Attribute = appconfig.db.conn.model('Attribute', AttributeSchema);
+//var Attribute = new AttributeSchema;
 var attributes = {
 	getAttributes: function (req, res){
 		Attribute.find({}, function(err, results) {
