@@ -21,7 +21,7 @@ var ProductSchema = new Schema({
 	categories:{ type : Array , "default" : [] },
 	images:{ type : Array , "default" : [] },
 	attribute_sets:{ type : Array , "default" : [] }
-},{ collection: 'Product' });
+});
 
 
 ProductSchema.pre('save', function(next) {

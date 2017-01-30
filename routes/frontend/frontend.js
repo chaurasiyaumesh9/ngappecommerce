@@ -61,7 +61,7 @@ var products = {
 		Product.find( { categories: { $elemMatch: { selected: true, _id: cId } }, discontinued:{$ne: true} } , function(err, results) {
 			if (!err)
 			{
-				console.log('results : ',results);
+				//console.log('results : ',results);
 				res.json( results );
 			}else{
 				console.log('Error while performing the query..check function products.getProductsByCategory() for more details..', err );
