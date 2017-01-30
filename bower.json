@@ -16,9 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular-route": "latest",
+    "angular-route": "1.5",
     "angular-material": "latest",
-    "angular": "latest",
+    "angular": "1.5",
     "bootstrap-datepicker": "latest",
     "bootstrap": "latest",
     "font-awesome": "latest",
@@ -31,5 +31,8 @@
     "angular-elevate-zoom": "^1.0.3",
     "elevatezoom": "^2.2.3",
     "chart.js": "1.0.2"
+  },
+  "resolutions": {
+    "angular": "1.5"
   }
 }
