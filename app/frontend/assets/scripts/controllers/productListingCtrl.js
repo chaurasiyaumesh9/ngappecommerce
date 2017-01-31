@@ -1,4 +1,4 @@
-angular.module('sampleCartApp.controller').controller('productListingCtrl', function( $scope, $rootScope, $routeParams, productService, categoryService, cartService, $location ){
+angular.module('sampleCartApp.controller').controller('productListingCtrl', function( $scope, $rootScope, ngProgressFactory, $routeParams, productService, categoryService, cartService, $location ){
 	$scope.message = "Product Listing Page!"; //just for testing purpose
 	$scope.layout = 'grid';
 	$scope.filters = [
@@ -20,7 +20,8 @@ angular.module('sampleCartApp.controller').controller('productListingCtrl', func
 	];
 
 
-	
+	$rootScope.progressbar = ngProgressFactory.createInstance();
+	$rootScope.progressbar.start();
 	$scope.loading = true;
 	$scope.defaultFilter = {
 		caption: "Look Up By",
@@ -44,8 +45,12 @@ angular.module('sampleCartApp.controller').controller('productListingCtrl', func
 		
 		productService.getProductsByCategory( cId ).then( function( response ){
 			//console.log('response :',response);
-			$scope.productList = response;
+			
 			$scope.loading = false;
+			$rootScope.progressbar.set(100);
+			$rootScope.progressbar.complete();
+			$scope.productList = response;
+			//$rootScope.progressbar.reset();
 		} , function(errorMessage ){ 
 			console.warn( errorMessage );
 		});

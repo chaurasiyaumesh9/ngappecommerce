@@ -30,6 +30,7 @@
     "angular-filepicker": "^1.1.4",
     "angular-elevate-zoom": "^1.0.3",
     "elevatezoom": "^2.2.3",
-    "chart.js": "1.0.2"
+    "chart.js": "1.0.2",
+    "ngprogress": "^1.1.3"
   }
 }
