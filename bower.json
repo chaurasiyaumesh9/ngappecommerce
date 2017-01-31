@@ -16,11 +16,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular-route": "1.6.1",
+    "angular-route": "latest",
     "angular-material": "latest",
-    "angular": "1.6.1",
+    "angular": "latest",
     "bootstrap-datepicker": "latest",
-    "bootstrap": "3.3.7",
+    "bootstrap": "latest",
     "font-awesome": "latest",
     "ng-file-upload": "latest",
     "slick-carousel": "latest",
