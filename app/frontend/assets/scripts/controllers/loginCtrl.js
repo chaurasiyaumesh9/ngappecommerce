@@ -5,7 +5,7 @@ angular.module('sampleCartApp.controller').controller('loginCtrl', function( $sc
 	var catchInterval;
 	$scope.login = function( user ){
 		$http.post('/login', user).then( function( response ){
-			//console.log('login response :',response);;
+			console.log('login response :',response);;
 			if ( response.data.user )
 			{
 				$rootScope.activeUser = response.data.user ;

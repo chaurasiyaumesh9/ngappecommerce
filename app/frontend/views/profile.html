@@ -2,8 +2,6 @@
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Welcome {{ user.local.displayName ||  user.facebook.name || user.google.name }} 
 		
-		<!-- - {{ user.local.email || user.facebook.email || user.google.email }} --></h1>
-         <!-- <a href="#!/logout" ng-click="logout()" class="btn btn-default btn-sm">Logout</a>  -->
     </div>
 
 	<loader></loader>
@@ -31,7 +29,8 @@
                     <p>
 						<img ng-src="{{ user.facebook.profilePic }}" /> <br/>
                         <strong>id</strong>: {{ user.facebook.id }}<br>
-                        <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.facebook.token }}</span><br>
+                        <div class="hidden"><strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.facebook.token }}</span></div>
+                        
                         <strong>email</strong>: {{ user.facebook.email }}<br>
                         <strong>name</strong>: {{ user.facebook.name }}
                     </p>
@@ -45,7 +44,10 @@
                     <p>
 						<img ng-src="{{ user.google.profilePic }}" /> <br/>
                         <strong>id</strong>: {{ user.google.id }}<br>
-                        <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.google.token }}</span><br>
+                        <div class="hidden">
+                            <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.google.token }}</span>
+                        </div>
+                        
                         <strong>email</strong>: {{ user.google.email }}<br>
                         <strong>name</strong>: {{ user.google.name }}
                     </p>
@@ -58,7 +60,9 @@
                     <p>
 						<img ng-src="{{ user.twitter.profilePic }}" /> <br/>
                         <strong>id</strong>: {{ user.twitter.id }}<br>
-                        <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.twitter.token }}</span><br>
+                        <div class="hidden">
+                            <strong>token</strong>: <span style="display:block;overflow:hidden;">{{ user.twitter.token }}</span>
+                        </div>
                         <strong>username</strong>: {{ user.twitter.username }}<br>
                         <strong>name</strong>: {{ user.twitter.name }}
                     </p>

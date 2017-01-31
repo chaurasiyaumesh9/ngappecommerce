@@ -2,7 +2,9 @@ angular.module('sampleCartApp.controller').controller('profileCtrl', function( $
 	$scope.message = "User Profile will be shown here ";
 	$scope.loading = true;
 	
-	$http.get('/loggedin').then( function( user ){
+	$http.get('/loggedin').then( function( response ){
+		var user = response.data;
+		//console.log('profileCtrl response :',user);;
 		if ( user !== '0' )
 		{
 			$rootScope.activeUser = user;

@@ -10,7 +10,9 @@ angular.module('sampleCartApp.controller').controller('socialConnectCtrl', funct
 		}
 	});
 
-	function onSuceessCallback( user ){
+	function onSuceessCallback( response ){
+		var user = response.data;
+		//console.log('socialConnectCtrl onSuceessCallback response :',user);;
 		if ( user !== '0' )
 		{
 			$rootScope.activeUser = user;

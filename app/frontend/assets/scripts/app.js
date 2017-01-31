@@ -81,8 +81,10 @@ cartApp.run(function($rootScope) {
 function checkLogin( $q, $timeout, $http, $location, $rootScope ){
 	var deferred = $q.defer();
 
-	$http.get('/loggedin').then( function( user ){
+	$http.get('/loggedin').then( function( response ){
 		$rootScope.errorMessage = null;
+		//consoel.log('user : ',user);
+		var user = response.data;
 		if ( user !== '0' )
 		{
 			$rootScope.activeUser = user;
@@ -101,8 +103,9 @@ function checkLogin( $q, $timeout, $http, $location, $rootScope ){
 function checkLogin2( $q, $timeout, $http, $location, $rootScope ){
 	var deferred = $q.defer();
 
-	$http.get('/loggedin').then( function( user ){
+	$http.get('/loggedin').then( function( response ){
 		$rootScope.errorMessage = null;
+		var user = response.data;
 		if ( user !== '0' )
 		{
 			deferred.reject();
@@ -125,7 +128,9 @@ function getActiveUser( $http, $rootScope ){
 		}
 	});*/
 
-	$http.get('/loggedin').then( function( user ){
+	$http.get('/loggedin').then( function( response ){
+		var user = response.data;
+		//console.log('getActiveUser user : ',user);
 		if ( user !== '0' )
 		{
 			$rootScope.activeUser = user;
