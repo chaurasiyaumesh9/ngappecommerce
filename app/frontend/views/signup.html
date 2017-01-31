@@ -5,7 +5,7 @@
 		<!-- <div class="alert alert-warning" ng-show="showMessage">
 			<strong>Warning!</strong> {{ message }}
 		  </div> -->
-		  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+		  <div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
 
 		<!-- SIGN UP FORM -->
 		<form ng-submit="signUp( user )" method="POST" role="form">

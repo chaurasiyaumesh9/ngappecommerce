@@ -21,8 +21,11 @@
 	<link rel="stylesheet" href="assets/stylesheets/style.css">	
 
 </head>
-<body ng-app="sampleCartApp" zoom-container>
+<body ng-app="sampleCartApp" zoom-container ng-controller="AppCtrl">
+	<md-progress-linear md-mode="determinate" value="{{determinateValue}}"></md-progress-linear>
+
 	<div class="wrapper" >
+
 		<div class="top-menu" ng-show="!fullmode" ng-controller="navCtrl">
 			<nav class="navbar navbar-default">
 			  <div class="container">
@@ -72,10 +75,14 @@
  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"> </script>
  <script src="../bower_components/slick-carousel/slick/slick.min.js"> </script>
 
+
+
+
  <script src="assets/scripts/services/index.js"> </script>
  <script src="assets/scripts/directives/index.js"> </script>
  <script src="assets/scripts/filters/index.js"> </script>
  <script src="assets/scripts/controllers/index.js"> </script>
+  <script src="assets/scripts/controllers/AppCtrl.js"> </script>
  <script src="assets/scripts/controllers/navCtrl.js"> </script>
  <script src="assets/scripts/controllers/hompageCtrl.js"> </script>
  <script src="assets/scripts/controllers/loginCtrl.js"> </script>
