@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "bower install --save"
+    "postinstall": "bower install update --save"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
