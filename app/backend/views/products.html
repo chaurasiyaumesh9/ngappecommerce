@@ -127,7 +127,7 @@
 				<tbody>
 					<tr dir-paginate="product in productList | orderBy:sortType:sortReverse | filterProductsByCategory:currentCategory | filter:searchProduct | filter:q | itemsPerPage: pageSize" current-page="currentPage">
 						<td> <input type="checkbox" ng-model="product.selected" ng-click="checkIndividual()" /> </td>
-						<td width="85" height="85"> <a href="#/products/{{ product._id }}" >  <img src="{{ product.images | smallImg }}" class="small-image" /> </a>  </td>
+						<td width="85" height="85"> <a href="#!/products/{{ product._id }}" >  <img src="{{ product.images | smallImg }}" class="small-image" /> </a>  </td>
 						<td> {{ product.name }}  </td>
 						
 						<!-- <td> {{ product.SKU }} </td>  -->
@@ -138,8 +138,8 @@
 						<td> {{ product.quantity }} </td>
 						<td> {{ product.discontinued | yesNo }} </td>
 						<td> {{ product.in_stock | yesNo}} </td>
-						<td> <a href="#/products/{{ product._id }}"> <!-- <i class="fa fa-eye"></i> --> View  </a> </td> 
-						<!-- <td> <md-button class="md-raised md-primary md-hue-1" ng-href="#/products/{{ product.id }}"> View </md-button> </td> -->
+						<td> <a href="#!/products/{{ product._id }}"> <!-- <i class="fa fa-eye"></i> --> View  </a> </td> 
+						<!-- <td> <md-button class="md-raised md-primary md-hue-1" ng-href="#!/products/{{ product.id }}"> View </md-button> </td> -->
 						
 					 </tr>
 				 </tbody>
@@ -150,7 +150,7 @@
 		</div>
 	</div>	
 	<div class="container">
-		<a class="btn btn-primary" href="#/products/add-new"> <i class="fa fa-plus"></i> Add New </a>
+		<a class="btn btn-primary" href="#!/products/add-new"> <i class="fa fa-plus"></i> Add New </a>
 		<button class="btn btn-danger" ng-disabled="!showDelete" ng-click="deleteProducts()"> <i class="fa fa-trash"></i> Delete </button>
 	</div>
 

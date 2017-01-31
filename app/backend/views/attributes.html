@@ -72,7 +72,7 @@
 					<td> {{ at.code }} </td>
 					<td> {{ at.type }} </td>
 					<td> {{ at.created_at | date:"MM/dd/yyyy 'at' h:mma"}} </td>
-					<td> <a href="#/attributes/{{at._id}}"> View </a></td>
+					<td> <a href="#!/attributes/{{at._id}}"> View </a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -81,7 +81,7 @@
 		  </div>
 	</div>
 	<div class="container">
-		<a class="btn btn-primary" href="#/attributes/add-new"> <i class="fa fa-plus"></i> Add New </a>
+		<a class="btn btn-primary" href="#!/attributes/add-new"> <i class="fa fa-plus"></i> Add New </a>
 		<button class="btn btn-danger" ng-disabled="!showDelete" ng-click="deleteAttributes()"> <i class="fa fa-trash"></i> Delete </button>
 	</div>
 </div>
