@@ -27,6 +27,7 @@ angular.module('sampleCartAdmin.controllers')
 	function getAllCategories(){
 		$scope.loading = true;
 		categoryService.getAllCategories().then( function( response ){
+			//console.log('getAllCategories response : ',response);
 			$scope.categories = response;
 			$scope.loading = false;
 		}, function( errorMessage ){

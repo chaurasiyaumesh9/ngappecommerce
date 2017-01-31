@@ -58,6 +58,8 @@ adminApp.config(function($routeProvider, $locationProvider) {
 		//function($locationProvider) {
 			//$locationProvider.hashPrefix('!');
 		//}
+
+		$locationProvider.html5Mode(false).hashPrefix('!');
 });
 
 adminApp.controller('adminCtrl', function($scope, $rootScope ){
