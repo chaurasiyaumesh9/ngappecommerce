@@ -1,14 +1,14 @@
 {
   "name": "ecommerce-app",
   "main": "server.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "engines": {
     "node": "5.1.0",
     "npm": "3.7.2"
   },
   "scripts": {
     "start": "node server.js",
-    "postinstall": "bower install"
+    "postinstall": "bower install --save"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
