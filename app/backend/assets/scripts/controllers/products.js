@@ -1,5 +1,5 @@
 angular.module('sampleCartAdmin.controllers')
-.controller('productsCtrl', function($scope,$rootScope, $routeParams, productService, categoryService, attributeSetsService, $timeout, common,Upload, $http, $q){
+.controller('productsCtrl', function($scope,$rootScope, $routeParams, productService, categoryService,ngProgressFactory, attributeSetsService, $timeout, common,Upload, $http, $q){
 	$scope.message = "Manage Your Products";
 	$rootScope.alerts = [];
 	$scope.currentPage = 1;
@@ -25,10 +25,12 @@ angular.module('sampleCartAdmin.controllers')
 	{
 		productID = $routeParams.id; // check if in edit/view mode
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		productService.getProductById( productID ).then( function( response ){
 			//console.log('getProductById :',response);
 			$scope.product = response;
 			$scope.loading = false;
+			$rootScope.progressbar.complete();
 			$scope.product.valid_from = common.stringToDate( $scope.product.valid_from );
 			$scope.product.valid_till  = common.stringToDate( $scope.product.valid_till );
 		} , function(errorMessage ){ 
@@ -38,11 +40,13 @@ angular.module('sampleCartAdmin.controllers')
 	
 	$scope.addNewProduct = function( product ){	
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		$scope.uploadFiles( product ).then( function( response ){
 			//console.log('uploaded all!',product);
 			productService.addNewProduct( product ).then( function( response ){
 				//console.log('added to DB!');
 				$scope.loading = false;
+				$rootScope.progressbar.complete();
 				$rootScope.alerts.push({type:"success", msg:  "New Product Added Successfully!" });
 				//$timeout(function() { $scope.addSuccess = false;}, 3000); //need to make it generic for all the messages
 				$scope.loadDefaults(); //re-initalize my page by loading defaults
@@ -56,6 +60,7 @@ angular.module('sampleCartAdmin.controllers')
 	$scope.updateProduct = function( product ){
 		//console.log('updateProduct :',product);
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		product.updated_at = new Date();
 		$scope.uploadFiles( product ).then( function( response ){
 			//console.log('uploaded all!',product);
@@ -63,6 +68,7 @@ angular.module('sampleCartAdmin.controllers')
 				//console.log('updated to DB!');
 				//console.log('updateProduct response :',response);
 				$scope.loading = false;
+				$rootScope.progressbar.complete();
 				$scope.product = response;
 				$scope.product.valid_from = common.stringToDate( $scope.product.valid_from );
 				$scope.product.valid_till  = common.stringToDate( $scope.product.valid_till );
@@ -78,8 +84,10 @@ angular.module('sampleCartAdmin.controllers')
 
 	$scope.deleteProduct = function( product ){
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		productService.deleteProduct( product._id ).then( function( response ){
 			$scope.loading = true;
+			$rootScope.progressbar.complete();
 			$rootScope.alerts.push({type:"danger", msg:  "Product Deleted Successfully!" });
 			//$timeout(function() { $scope.deletionSuccess = false;}, 3000); //need to make it generic for all the messages
 		}, function( errorMessage ){
@@ -94,9 +102,11 @@ angular.module('sampleCartAdmin.controllers')
 
 	function getProductList(){
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		productService.getProductList().then( function( response ){
 			$scope.productList = response;
 			$scope.loading = false;
+			$rootScope.progressbar.complete();
 		}, function( errorMessage ){
 			console.warn( errorMessage );
 		});

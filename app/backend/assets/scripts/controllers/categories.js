@@ -1,5 +1,5 @@
 angular.module('sampleCartAdmin.controllers')
-.controller('categoriesCtrl', function($scope, $http, $routeParams, categoryService, $timeout, $rootScope, $q ){
+.controller('categoriesCtrl', function($scope, $http, $routeParams, categoryService, $timeout, $rootScope, $q, ngProgressFactory ){
 	$scope.message = "Manage Categories";
 	$rootScope.alerts = [];
 	$scope.showDelete = false;
@@ -11,9 +11,11 @@ angular.module('sampleCartAdmin.controllers')
 		categoryId = $routeParams.id; // check if in edit mode
 		//console.log('categoryId:',categoryId);
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		categoryService.getCategoryById( categoryId ).then( function( response ){
 			$scope.category = response;
 			$scope.loading = false;
+			$rootScope.progressbar.complete();
 		} , function(errorMessage ){ 
 			console.warn( errorMessage );
 		});
@@ -26,10 +28,12 @@ angular.module('sampleCartAdmin.controllers')
 	
 	function getAllCategories(){
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		categoryService.getAllCategories().then( function( response ){
 			//console.log('getAllCategories response : ',response);
 			$scope.categories = response;
 			$scope.loading = false;
+			$rootScope.progressbar.complete();
 		}, function( errorMessage ){
 			console.warn( errorMessage );
 		});
@@ -37,9 +41,11 @@ angular.module('sampleCartAdmin.controllers')
 
 	$scope.updateCategory = function( category ){
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		category.updated_at = new Date();
 		categoryService.updateCategory( category ).then( function( response ){
 			$scope.loading = false;
+			$rootScope.progressbar.complete();
 			$rootScope.alerts.push({type:"success", msg:  "Category Updated Successfully!" });
 		}, function( errorMessage ){
 			console.warn( errorMessage );
@@ -48,8 +54,10 @@ angular.module('sampleCartAdmin.controllers')
 
 	$scope.addNewCategory = function( category ){
 		$scope.loading = true;
+		$rootScope.progressbar.start();
 		categoryService.addNewCategory( category ).then( function( response ){
 			$scope.loading = false;
+			$rootScope.progressbar.complete();
 			$rootScope.alerts.push({type:"success", msg:  "Category Added Successfully!" });
 			$scope.loadDefaults();
 		}, function( errorMessage ){

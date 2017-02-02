@@ -1,4 +1,4 @@
-var adminApp = angular.module('sampleCartAdmin', ['ngRoute','ngAnimate','ui.bootstrap','angularUtils.directives.dirPagination','ngMaterial','ngFileUpload','sampleCartAdmin.directives','sampleCartAdmin.services','sampleCartAdmin.filters','sampleCartAdmin.controllers']);
+var adminApp = angular.module('sampleCartAdmin', ['ngRoute','ngAnimate','ui.bootstrap','angularUtils.directives.dirPagination','ngMaterial','ngFileUpload','ngProgress','sampleCartAdmin.directives','sampleCartAdmin.services','sampleCartAdmin.filters','sampleCartAdmin.controllers']);
 
 adminApp.config(function($routeProvider, $locationProvider) {
 	$routeProvider
@@ -62,12 +62,14 @@ adminApp.config(function($routeProvider, $locationProvider) {
 		$locationProvider.html5Mode(false).hashPrefix('!');
 });
 
-adminApp.controller('adminCtrl', function($scope, $rootScope ){
+adminApp.controller('adminCtrl', function($scope, $rootScope, ngProgressFactory ){
 	$scope.message = "Welcome to Dashboard!"; //just to check if controller is working fine..print the message!
 	$rootScope.alerts = [];
 	$rootScope.closeAlert = function( index ) {
 		$rootScope.alerts.splice(index, 1);
 	};
+
+	$rootScope.progressbar = ngProgressFactory.createInstance();
 });
 
 var lib = {
