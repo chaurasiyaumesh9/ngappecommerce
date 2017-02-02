@@ -8,7 +8,9 @@
 <div ng-hide="loading">
 	<div class="container" >
 		
-		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert( $index )"> {{ alert.msg }} </uib-alert>
+		<!-- <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert( $index )"> {{ alert.msg }} </uib-alert> -->
+
+		<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
 		
 		<form ng-submit="updateOneById( set )" ng-init="loadDefaults()" method="POST" role="form">
 			<attribute-set></attribute-set>

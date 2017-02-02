@@ -5,7 +5,8 @@
 </div>
 <loader></loader>
 <div class="container" ng-init="loadDefaults()" ng-hide="loading">
-	<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+	<!-- <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert> -->
+	<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{alert.msg}}</div>
 	<form ng-submit="addNewCategory( category )" method="POST" role="form">
 		<category></category>
 		<button type="submit" class="btn btn-primary"> <i class="fa fa-floppy-o"></i> Save </button>

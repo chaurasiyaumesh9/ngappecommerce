@@ -10,7 +10,9 @@
 		<!-- <div class="alert alert-danger" ng-show="deletionSuccess">
 		  <strong>{{ deleteCount }} </strong> Categorie(s) deleted successfully!
 		</div> -->
-		<uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"> {{ deleteCount }} {{alert.msg}}</uib-alert>
+		<!-- <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"> {{ deleteCount }} {{alert.msg}}</uib-alert> -->
+
+		<div uib-alert ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">{{ deleteCount }} {{alert.msg}}</div>
 		<table class="table table-striped">
 			<thead>
 				<tr>
