@@ -317,7 +317,7 @@ section, footer, header, aside, nav{
 	}
 }
 
-@media only screen and (min-width : 768px) and (max-width : 1024px) and (-webkit-min-device-pixel-ratio: 2){
+@media only screen and (min-device-width : 1536px) and (max-device-width : 2048px) and (-webkit-min-device-pixel-ratio: 2){
 	.ipad-test{
 		font-size: 50px;
 	}
