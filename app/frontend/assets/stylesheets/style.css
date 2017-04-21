@@ -307,7 +307,7 @@ section, footer, header, aside, nav{
 	height:90px;
 }
 .ipad-test{
-		font-size: 20px;
+		font-size: 12px;
 	}
 
 
@@ -319,6 +319,6 @@ section, footer, header, aside, nav{
 
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (-webkit-min-device-pixel-ratio: 2){
 	.ipad-test{
-		display: none;
+		font-size: 50px;
 	}
 }
