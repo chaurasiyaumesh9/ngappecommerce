@@ -17,9 +17,9 @@
   ],
   "dependencies": {
     "angular-route": "1.6.1",
-    "angular-material": "latest",
+    "angular-material": "1.1.1",
     "angular": "1.6.1",
-    "bootstrap-datepicker": "latest",
+    "bootstrap-datepicker": "1",
     "bootstrap": "3.3.7",
     "font-awesome": "latest",
     "ng-file-upload": "latest",
@@ -33,5 +33,8 @@
     "chart.js": "1.0.2",
     "ngprogress": "^1.1.3",
     "update": "^0.7.4"
+  },
+  "resolutions": {
+    "angular": "1.7.8"
   }
 }
